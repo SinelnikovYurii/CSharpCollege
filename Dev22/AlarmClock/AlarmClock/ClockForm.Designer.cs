@@ -20,7 +20,7 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        
 
         /// <summary>
         /// Required method for Designer support - do not modify
@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.DisplayLabel = new System.Windows.Forms.Label();
             this.AboutButton = new System.Windows.Forms.Button();
+            this.TimerButton = new System.Windows.Forms.Button();
             this.SettingsButton = new System.Windows.Forms.Button();
             this.ExitButton = new System.Windows.Forms.Button();
             this.AlarmTimer = new System.Windows.Forms.Timer(this.components);
@@ -78,6 +79,18 @@
             this.ExitButton.Text = "Выход";
             this.ExitButton.UseVisualStyleBackColor = true;
             this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
+            //
+
+
+            this.TimerButton.Location = new System.Drawing.Point(13, 103);
+            this.TimerButton.Name = "TimerButton";
+            this.TimerButton.Size = new System.Drawing.Size(228, 23);
+            this.TimerButton.TabIndex = 4;
+            this.TimerButton.Text = "Секундомер";
+            this.TimerButton.UseVisualStyleBackColor = true;
+            this.TimerButton.Click += new System.EventHandler(this.TimerButton_Click);
+
+
             // 
             // AlarmTimer
             // 
@@ -89,7 +102,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(379, 111);
+            this.ClientSize = new System.Drawing.Size(379, 134);
+            this.Controls.Add(this.TimerButton);
             this.Controls.Add(this.ExitButton);
             this.Controls.Add(this.SettingsButton);
             this.Controls.Add(this.AboutButton);
@@ -102,7 +116,9 @@
 
         }
 
-        #endregion
+        
+
+        private System.Windows.Forms.Button TimerButton;
 
         private System.Windows.Forms.Label DisplayLabel;
         private System.Windows.Forms.Button AboutButton;

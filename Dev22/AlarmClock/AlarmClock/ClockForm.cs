@@ -57,6 +57,13 @@ namespace AlarmClock
             Close();
         }
 
+        private void TimerButton_Click(object sender, EventArgs e)
+        {
+
+            new TimerForm().ShowDialog();
+
+        }
+
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             var form = new SettingsForm();
