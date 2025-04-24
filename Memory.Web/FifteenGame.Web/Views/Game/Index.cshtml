@@ -1,0 +1,59 @@
+﻿@model FifteenGame.Web.Models.GameViewModel
+
+@{
+    bool isGameOver = (bool?)ViewBag.IsGameOver ?? false;
+}
+
+<link href="~/Content/Site.css" rel="stylesheet" />
+
+<main class="game-container">
+    @if (isGameOver)
+    {
+        <div class="game-over-message text-center">
+            <h2 class="text-success">Congratulations!!!</h2>
+            <div>@Html.ActionLink("Restart", "Index", "Game", new { }, new { @class = "btn btn-primary fs-3 restart-button" })</div>
+        </div>
+    }
+
+    <div class="game-board container text-center">
+        @for (int row = 0; row < Model.RowCount; row++)
+        {
+            <div class="game-row row d-flex justify-content-center align-items-center">
+                @for (int column = 0; column < Model.ColumnCount; column++)
+                {
+                    <div class="game-cell col col-2 d-grid gap-2 p-2">
+
+                        @if (Model.Cells[row, column].Name == string.Empty)
+                        {
+                            
+                            <div class="hidden-cell"></div>
+                            
+                        }
+                        else if (isGameOver)
+                        {
+                            
+                            <button class="btn cell-button cell-revealed fs-3" disabled>@Model.Cells[row, column].TextButoon</button>
+                        }
+                        else if (Model.Cells[row, column].IsMine)
+                        {
+                            
+                            <button class="btn cell-button cell-mine fs-3" disabled>@Model.Cells[row, column].TextButoon</button>
+                        }
+                        else
+                        {
+                           
+                            @Html.ActionLink(
+                                          Model.Cells[row, column].TextButoon,
+                                          "PressButton",
+                                          new { colum = Model.Cells[row, column].Column, row = Model.Cells[row, column].Row },
+                                          new { @class = "btn cell-button cell-default fs-3" }
+                                      )
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</main>
+
+
